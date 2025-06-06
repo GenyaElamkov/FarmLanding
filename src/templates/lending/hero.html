@@ -1,0 +1,12 @@
+<section class="hero-section" id="home" {% if image %}style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ image.url }}') no-repeat center center; background-size: cover;"{% endif %}>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center animate">
+                <h1 class="display-4 mb-4">{{ title }}</h1>
+                <p class="lead mb-5">{{ description }}</p>
+                <a href="#products" class="btn btn-success btn-lg px-4 me-2">Наша продукция</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg px-4">Контакты</a>
+            </div>
+        </div>
+    </div>
+</section>

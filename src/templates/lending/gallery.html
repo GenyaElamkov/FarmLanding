@@ -1,0 +1,18 @@
+<section id="gallery" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center section-title animate">Галерея фермы</h2>
+
+        <div class="row g-4 justify-content-center">
+            {% for image in images %}
+                <div class="col-lg-3 col-md-4 col-sm-6 animate">
+                    <div class="gallery-item">
+                        <img src="{{ image.image.url }}" alt="{{ image.name }}" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 animate">
+                <h2 class="text-center section-title animate">{{ title }}</h2>
+                {{ description }}
+                {% comment %} <p>Ферма "Солнечная" - это семейное хозяйство, основанное в 2010 году. Мы расположены в экологически чистом районе, вдали от промышленных предприятий и крупных городов.</p>
+                <p>Наша философия - гармония с природой. Мы не используем химические удобрения, антибиотики и гормоны роста. Все наши животные содержатся в просторных вольерах с доступом к свежему воздуху и натуральным кормам.</p>
+                <p>Овощи и фрукты мы выращиваем по принципам органического земледелия, что позволяет получать продукты с насыщенным вкусом и максимальной пользой для здоровья.</p> {% endcomment %}
+
+                <div class="mt-4">
+                    <a href="#gallery" class="btn btn-outline-success me-2">Посмотреть ферму</a>
+                    <a href="#contact" class="btn btn-success">Связаться с нами</a>
+                </div>
+            </div>
+            <div class="col-lg-6 animate delay-1">
+                <img src="{{ image.url }}" alt="Наша ферма" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>

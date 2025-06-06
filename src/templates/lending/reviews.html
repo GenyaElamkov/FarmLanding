@@ -1,0 +1,43 @@
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center section-title mb-5 animate">Отзывы</h2>
+
+        <!-- Карусель Bootstrap -->
+        <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+            <!-- Индикаторы (точки) -->
+            <div class="carousel-indicators">
+                {% for review in reviews %}
+                <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></button>
+                {% endfor %}
+            </div>
+
+            <!-- Слайды -->
+            <div class="carousel-inner">
+                {% for review in reviews %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %} animate">
+                    <div class="testimonial-card shadow-sm text-center mx-auto" style="max-width: 600px;">
+                        <img src="{{ review.image.url }}" alt="{{ review.name }}" class="testimonial-img rounded-circle mb-3">
+                        <h5>{{ review.name }}</h5>
+                        <div class="mb-3 text-warning">
+                            {% with ''|center:review.rating as range %}
+                            {% for _ in range %}
+                                <i class="fas fa-star"></i>
+                            {% endfor %}
+                            {% endwith %}
+                        </div>
+                        <p class="px-4">{{ review.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Кнопки "Назад/Вперед" -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark rounded-circle"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-dark rounded-circle"></span>
+            </button>
+        </div>
+    </div>
+</section>
