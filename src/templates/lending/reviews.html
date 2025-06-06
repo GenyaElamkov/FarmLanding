@@ -25,7 +25,9 @@
                             {% endfor %}
                             {% endwith %}
                         </div>
+                        {% autoescape off %}
                         <p class="px-4">{{ review.description }}</p>
+                        {% endautoescape %}
                     </div>
                 </div>
                 {% endfor %}

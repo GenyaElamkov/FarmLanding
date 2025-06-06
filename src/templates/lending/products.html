@@ -9,7 +9,9 @@
                     <div class="card-body">
                         <span class="badge bg-success mb-2">{{ product.category }}</span>
                         <h5 class="card-title">{{ product.name }}</h5>
+                        {% autoescape off %}
                         <p class="card-text">{{ product.description }}</p>
+                        {% endautoescape %}
                     </div>
                     {% if product.featured %}
                     <div class="card-footer bg-success text-white text-center">В наличии</div>

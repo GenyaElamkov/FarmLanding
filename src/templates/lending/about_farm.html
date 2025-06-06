@@ -8,7 +8,9 @@
                             <i class="{{ farm.icon_class }}"></i>
                         </div>
                         <h4>{{ farm.title }}</h4>
+                        {% autoescape off %}
                         <p>{{ farm.description }}</p>
+                        {% endautoescape %}
                     </div>
                 </div>
             {% endfor %}

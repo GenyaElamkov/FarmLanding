@@ -3,7 +3,9 @@
         <div class="row">
             <div class="col-lg-8 mx-auto text-center animate">
                 <h1 class="display-4 mb-4">{{ title }}</h1>
+                {% autoescape off %}
                 <p class="lead mb-5">{{ description }}</p>
+                {% endautoescape %}
                 <a href="#products" class="btn btn-success btn-lg px-4 me-2">Наша продукция</a>
                 <a href="#contact" class="btn btn-outline-light btn-lg px-4">Контакты</a>
             </div>

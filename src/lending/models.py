@@ -18,13 +18,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    """Описания продукта
-    name: "Куриные яйца",
-    description: "Свежие яйца от кур, выращенных на натуральных кормах. Богаты белком и витаминами.",
-    image: "https://source.unsplash.com/random/600x400?chicken+egg",
-    category: "Яйца",
-    featured: true
-    """
+    """Описания продукта"""
 
     name = models.CharField(max_length=100, verbose_name="Имя продукта")
     slug = models.SlugField(max_length=100, unique=True)
