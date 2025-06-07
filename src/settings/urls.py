@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("ecoadmin/", admin.site.urls),
     path("", include("lending.urls")),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
