@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'import_export',
     'django_admin_listfilter_dropdown',
     'django_summernote',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 # Только для Django 3.0+

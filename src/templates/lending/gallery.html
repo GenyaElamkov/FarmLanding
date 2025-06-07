@@ -2,17 +2,52 @@
     <div class="container">
         <h2 class="text-center section-title animate">Галерея фермы</h2>
 
-        <div class="row g-4 justify-content-center">
-            {% for image in images %}
-                <div class="col-lg-3 col-md-4 col-sm-6 animate">
-                    <div class="gallery-item">
-                        <img src="{{ image.image.url }}" alt="{{ image.name }}" class="img-fluid">
-                        <div class="gallery-overlay">
-                            <i class="fas fa-search-plus text-white" style="font-size: 2rem;"></i>
+        <!-- Карусель Bootstrap без автопрокрутки -->
+        <div id="farmCarousel" class="carousel slide animate" data-bs-interval="false">
+            <div class="carousel-inner">
+                {% for image in images %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ image.name }}">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{ image.name }}</h5>
                         </div>
                     </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#farmCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущее</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#farmCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующее</span>
+            </button>
+        </div>
+
+        <!-- Миниатюры для навигации -->
+        <div class="row g-2 mt-3 justify-content-center">
+            {% for image in images %}
+                <div class="col-2">
+                    <img src="{{ image.image.url }}" class="img-thumbnail {% if forloop.first %}active{% endif %}"
+                         alt="{{ image.name }}" data-bs-target="#farmCarousel" data-bs-slide-to="{{ forloop.counter0 }}"
+                         {% if forloop.first %}aria-current="true"{% endif %}>
                 </div>
             {% endfor %}
         </div>
     </div>
 </section>
+
+<!-- Модальное окно для увеличенного просмотра -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="" class="img-fluid" id="modalImage">
+            </div>
+        </div>
+    </div>
+</div>
