@@ -23,12 +23,13 @@ class TestViews:
         response = views.contact_form_view(request)
         assert response.status_code in [200, 400]
 
-    # def test_contact_form_view_post(self, factory):
-    #     """Проверяем POST-запрос к contact_form_view."""
-    #     request = factory.post(
-    #         "/send-contact-form/",
-    #         data={"name": "Test", "email": "test@example.com"},
-    #         content_type="application/x-www-form-urlencoded",
-    #     )
-    #     response = views.contact_form_view(request)
-    #     assert response.status_code == 200
+    @pytest.mark.skip
+    def test_contact_form_view_post(self, factory):
+        """Проверяем POST-запрос к contact_form_view."""
+        request = factory.post(
+            "/send-contact-form/",
+            data={"name": "Test", "email": "test@example.com"},
+            content_type="application/x-www-form-urlencoded",
+        )
+        response = views.contact_form_view(request)
+        assert response.status_code == 200

@@ -1,5 +1,5 @@
+import os
 import pytest
-from django.core.exceptions import ValidationError
 from phonenumber_field.phonenumber import PhoneNumber
 
 from lending.models import (
@@ -15,6 +15,12 @@ from lending.models import (
 )
 
 
+
+def clean_up(file_path:str) -> None:
+    """Удалеят тестовый файл"""
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
 @pytest.mark.django_db
 class TestModels:
     def test_category_creation(self):
@@ -23,7 +29,7 @@ class TestModels:
         assert category._meta.verbose_name == "Категория"
         assert category._meta.verbose_name_plural == "Категории"
 
-    def test_product_creation(self):
+    def test_product_creation(self, temp_media_root):
         category = Category.objects.create(name="Овощи")
         product = Product.objects.create(
             name="Морковь",
@@ -36,14 +42,16 @@ class TestModels:
         assert product._meta.verbose_name == "Продукт"
         assert product._meta.verbose_name_plural == "Продукты"
         assert product.featured is True
+        clean_up('src\media\products\test_image.jpg')
 
-    def test_gallery_creation(self):
+    def test_gallery_creation(self, temp_media_root):
         gallery = Gallery.objects.create(name="Ферма летом")
         assert str(gallery) == "Ферма летом"
         assert gallery._meta.verbose_name == "Галерея"
         assert gallery._meta.verbose_name_plural == "Галерея"
 
-    def test_about_creation(self):
+
+    def test_about_creation(self, temp_media_root):
         about = About.objects.create(
             title="О нашей ферме",
             description="Мы работаем с 2010 года",
@@ -52,7 +60,7 @@ class TestModels:
         assert about._meta.verbose_name == "О нас"
         assert about._meta.verbose_name_plural == "О нас"
 
-    def test_review_creation(self):
+    def test_review_creation(self, temp_media_root):
         review = Review.objects.create(
             name="Иван Иванов",
             rating=5,
@@ -63,7 +71,7 @@ class TestModels:
         assert review._meta.verbose_name_plural == "Отзывы"
         assert review.rating == 5
 
-    def test_hero_creation(self):
+    def test_hero_creation(self, temp_media_root):
         hero = Hero.objects.create(
             title="Эко Ферма Солнечная",
             description="Натуральные продукты",
