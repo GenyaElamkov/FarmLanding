@@ -1,0 +1,20 @@
+.carousel-item img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.img-thumbnail {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.img-thumbnail:hover,
+.img-thumbnail.active {
+    opacity: 1;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}

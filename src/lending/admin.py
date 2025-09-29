@@ -1,13 +1,23 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from django.utils.translation import gettext_lazy as _
 from django.utils.safestring import mark_safe
+from django.utils.translation import gettext_lazy as _
+
+from django_summernote.admin import SummernoteModelAdmin
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
-from django_summernote.admin import SummernoteModelAdmin
-
-from .models import *
+from .models import (
+    About,
+    AboutFarm,
+    Category,
+    Contacts,
+    Gallery,
+    Hero,
+    Product,
+    Review,
+    SocialNetwork,
+)
 
 
 # Настройка заголовков админки
@@ -18,6 +28,7 @@ AdminSite.index_title = _("Управление контентом")
 admin.site.site_header = 'Панель управления Эко Фермы "Солнечная"'
 admin.site.site_title = 'Эко Ферма "Солнечная"'
 admin.site.index_title = 'Администрирование сайта'
+
 
 # Ресурсы для импорта/экспорта
 class ProductResource(resources.ModelResource):
@@ -121,6 +132,7 @@ class AboutFarmAdmin(SummernoteModelAdmin):
     list_display = ("title", "icon_class")
     search_fields = ("title", "description")
     summernote_fields = ('description',)
+
 
 # Регистрация моделей
 admin.site.register(Category, admin.ModelAdmin)

@@ -1,25 +1,25 @@
 import os
-import pytest
-from phonenumber_field.phonenumber import PhoneNumber
 
+import pytest
 from lending.models import (
-    Category,
-    Product,
-    Gallery,
     About,
-    Review,
-    Hero,
     AboutFarm,
+    Category,
     Contacts,
+    Gallery,
+    Hero,
+    Product,
+    Review,
     SocialNetwork,
 )
+from phonenumber_field.phonenumber import PhoneNumber
 
 
-
-def clean_up(file_path:str) -> None:
+def clean_up(file_path: str) -> None:
     """Удалеят тестовый файл"""
     if os.path.exists(file_path):
         os.remove(file_path)
+
 
 @pytest.mark.django_db
 class TestModels:
@@ -42,14 +42,13 @@ class TestModels:
         assert product._meta.verbose_name == "Продукт"
         assert product._meta.verbose_name_plural == "Продукты"
         assert product.featured is True
-        clean_up('src\media\products\test_image.jpg')
+        clean_up('src\\media\\products\test_image.jpg')
 
     def test_gallery_creation(self, temp_media_root):
         gallery = Gallery.objects.create(name="Ферма летом")
         assert str(gallery) == "Ферма летом"
         assert gallery._meta.verbose_name == "Галерея"
         assert gallery._meta.verbose_name_plural == "Галерея"
-
 
     def test_about_creation(self, temp_media_root):
         about = About.objects.create(

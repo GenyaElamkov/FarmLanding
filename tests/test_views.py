@@ -1,5 +1,6 @@
-import pytest
 from django.test import RequestFactory
+
+import pytest
 from lending import views
 
 

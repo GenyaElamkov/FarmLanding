@@ -1,13 +1,15 @@
 from django import template
 
+from lending.forms import FeedbackForm
+
 from ..models import (
-    Hero,
-    AboutFarm,
     About,
-    Product,
-    Gallery,
-    Review,
+    AboutFarm,
     Contacts,
+    Gallery,
+    Hero,
+    Product,
+    Review,
     SocialNetwork,
 )
 
@@ -69,13 +71,19 @@ def show_reviews():
 @register.inclusion_tag("lending/contacts.html")
 def show_contacts():
     contacts = Contacts.objects.first()
+    form = FeedbackForm()
+
+    context = {"form": form}
+
     if contacts:
-        return {
+        context.update({
             "address": contacts.address,
             "phone": contacts.phone.as_national,
             "email": contacts.email,
-        }
-    return {}
+        })
+
+    return context
+
 
 @register.inclusion_tag("lending/social_network.html")
 def show_social_network():

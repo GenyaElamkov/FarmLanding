@@ -1,9 +1,11 @@
-import pytest
-import tempfile
-import shutil
 import os
-from django.core.files.uploadedfile import SimpleUploadedFile
+import shutil
+import tempfile
+
 from django.conf import settings
+from django.core.files.uploadedfile import SimpleUploadedFile
+
+import pytest
 
 
 @pytest.fixture(scope="session")

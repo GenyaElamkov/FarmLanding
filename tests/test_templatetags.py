@@ -1,17 +1,19 @@
-import pytest
-from django.template import Template, Context
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.template import (
+    Context,
+    Template,
+)
 
+import pytest
 from lending.models import (
-    Hero,
-    AboutFarm,
-    Product,
-    Gallery,
     About,
-    Review,
-    Contacts,
-    SocialNetwork,
+    AboutFarm,
     Category,
+    Contacts,
+    Gallery,
+    Hero,
+    Product,
+    Review,
 )
 
 
@@ -62,7 +64,7 @@ class TestTemplateTags:
 
     def test_show_all_products_tag(self, test_image):
         category = Category.objects.create(name="Овощи")
-        product = Product.objects.create(
+        Product.objects.create(
             name="Морковь",
             slug="carrot",
             description="Свежая морковь",
@@ -88,8 +90,8 @@ class TestTemplateTags:
         assert "Тестовая галерея" in rendered
 
     def test_show_about_tag(self, test_image):
-        about = About.objects.create(
-            title="О нас тест", description="Тестовое описание", image=test_image
+        About.objects.create(
+            title="О нас тест", description="Тестовое описание", image=test_image,
         )
 
         template = Template("{% load lending_tags %} {% show_about %}")
@@ -115,8 +117,8 @@ class TestTemplateTags:
         assert "Отличные продукты!" in rendered
 
     def test_show_contacts_tag(self):
-        contacts = Contacts.objects.create(
-            address="Москва, ул. Тестовая", phone="+79123456789", email="test@test.ru"
+        Contacts.objects.create(
+            address="Москва, ул. Тестовая", phone="+79123456789", email="test@test.ru",
         )
 
         template = Template("{% load lending_tags %} {% show_contacts %}")

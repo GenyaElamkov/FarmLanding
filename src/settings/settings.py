@@ -1,13 +1,13 @@
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
+
 
 load_dotenv()
 
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 INSTALLED_APPS = [
     'admin_interface',
@@ -18,9 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'django.contrib.sitemaps',
-
+    'django_recaptcha',
     'lending.apps.LendingConfig',
 
     'phonenumber_field',
@@ -44,7 +42,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'settings.urls'
+ROOT_URLCONF = 'HelloDjango.urls'
 
 TEMPLATES = [
     {
@@ -78,7 +76,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
 LANGUAGE_CODE = "ru"
 
 TIME_ZONE = "Europe/Moscow"
@@ -87,13 +84,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-
 STATIC_URL = 'static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -102,6 +96,6 @@ TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 
 try:
-    from .local_settings import *
+    pass
 except ImportError:
-    from .prod_settings import *
+    pass
