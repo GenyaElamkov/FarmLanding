@@ -32,8 +32,8 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/ваш-username/эко-ферма-солнечная.git
-   cd эко-ферма-солнечная
+   git clone https://github.com/GenyaElamkov/FarmLanding.git
+   cd FarmLanding
    ```
 
 2. Создайте и активируйте виртуальное окружение:
